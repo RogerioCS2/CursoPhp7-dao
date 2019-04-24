@@ -1,9 +1,17 @@
 <?php 
-	require_once("configuracao.php");
+	require_once("Configuracao.php");
 
-	$sql = new Sql();
+	//$usuario = new Usuario();
+	//$usuario -> carregandoUsuario(4);	
+	//echo $usuario;
 
-	$usuarios = $sql -> comandosSql("select *from tb_usuario"); //CHAMANDO O MÉTODO SELECT DA CLASSE SQL
+	//$lista = Usuario::carregandoUsuarios();
+	//echo json_encode($lista);
 
-	echo json_encode($usuarios);
+	//$buscar = Usuario::buscarUsuario("cs");
+	//echo json_encode($buscar);
+
+	$usuario = new Usuario();
+	$usuario -> autenticaUsuario("RogerioCS", "cs123456");
+	echo $usuario;
  ?>
