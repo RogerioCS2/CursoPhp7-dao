@@ -41,12 +41,7 @@
 			));
 
 			if(count($resultado) > 0){
-				$linha = $resultado[0];
-
-				$this -> setIdusuario($linha['idusuario']);
-				$this -> setDeslogin($linha['deslogin']);
-				$this -> setDessenha($linha['dessenha']);
-				$this -> setDtcadastro(new DateTime($linha['dtcadastro']));
+				$this -> setarDados($resultado[0]);
 			}
 		}
 
@@ -62,8 +57,20 @@
 			));				
 		}
 
+		public function atualizarInformacoes($usuario, $senha){
+			$this -> setDeslogin($usuario);
+			$this -> setDessenha($senha);
+
+			$sql = new PersistenciaBanco();
+			$sql -> comandosSql("update tb_usuario set deslogin = :usuario, dessenha = :senha where idusuario = :id" ,array(
+				':usuario' => $this -> getDeslogin(),
+				':senha' => $this -> getDessenha(),
+				':id' => $this -> getIdusuario()
+			));				
+		}
+
 		public function autenticaUsuario($usuario, $senha){
-							
+
 			$sql = new PersistenciaBanco();
 
 			$resultado = $sql -> comandosSql("select *from tb_usuario where deslogin = :usuario and dessenha = :senha",array(
@@ -72,15 +79,35 @@
 			));
 
 			if(count($resultado) > 0){
-				$linha = $resultado[0];
-
-				$this -> setIdusuario($linha['idusuario']);
-				$this -> setDeslogin($linha['deslogin']);
-				$this -> setDessenha($linha['dessenha']);
-				$this -> setDtcadastro(new DateTime($linha['dtcadastro']));
+				$this -> setarDados($resultado[0]);				
 			}else{
 				throw new Exception("Error ao informar usuario ou senha");				
 			}
+		}
+
+		public function setarDados($dados){
+			$this -> setIdusuario($dados['idusuario']);
+			$this -> setDeslogin($dados['deslogin']);
+			$this -> setDessenha($dados['dessenha']);
+			$this -> setDtcadastro(new DateTime($dados['dtcadastro']));
+		}
+
+		public function inserindoDados(){
+			$sql = new PersistenciaBanco();
+
+			$resultado = $sql -> comandosSql("CALL sp_usuaro_insert(:usuario, :senha)",array(
+				":usuario" => $this -> getDeslogin(),
+				":senha" => $this -> getDessenha()
+			));
+
+			if(count($resultado) > 0){
+				$this -> setarDados($resultado[0]);
+			}
+		}
+
+		public function __construct($usuario = "", $senha = ""){
+			$this -> setDeslogin($usuario);
+			$this -> setDessenha($senha);
 		}
 
 		public function __toString(){

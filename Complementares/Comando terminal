@@ -1,0 +1,50 @@
+Listando aplicativos instalados
+dpkg --list
+------------------------------------------------------------------------------------
+
+Comando para instalaro xampp
+cd Downloads
+ls                               (Para verificar os arquivos exisgtentes na pasta)
+sudo chmod +x (Nome do programa) para liberar a permissão para edição
+sudo ./(Nome do Programa)        para executar o programa após liberação
+------------------------------------------------------------------------------------
+
+Comando para iniciar Xampp
+cd /opt/lampp/
+sudo ./lampp start
+sudo ./lampp stop                 (Comando para parar o serviço)
+------------------------------------------------------------------------------------
+comando para git hub
+Comando para inicializar diretorio
+git init
+git remote add origin https://github.com/RogerioCS2/CursoPhp7-dao.git
+git pull origin master
+
+Comando para diretorio já inicializado
+git add --all
+git commit -m "texto atualizacao"
+git push origin master
+
+usuario: tecnologia.rogerio@gmail.com
+senha: padrao
+------------------------------------------------------------------------------------
+
+comando para apagar programas
+sudo apt-get purge (nome do Programa)
+------------------------------------------------------------------------------------
+
+criando pastas em um diretorio
+sudo mkdir /opt/lampp/htdocs/(Nome da Pasta Desejada)
+------------------------------------------------------------------------------------
+
+Alterando permissão da pasta crida
+sudo chmod u=rwx,g=rwx,o=rw /opt/lampp/htdocs/(Nome da Pasta Desejada)
+sudo chown daniela /opt/lampp/htdocs/(Nome da Pasta Desejada)/
+------------------------------------------------------------------------------------
+
+Criando arquivo em pastas
+touch (Nome do Arquivo).php
+Exemplo - touch index.php
+
+
+
