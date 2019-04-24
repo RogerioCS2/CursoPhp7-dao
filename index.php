@@ -19,9 +19,13 @@
 	//$usuario -> inserindoDados();
 	//echo $usuario;
 
+	//$usuario = new Usuario();
+	//$usuario -> carregandoUsuario(5);
+	//$usuario -> atualizarInformacoes("FernandoSC", "cs123456");
+
 	$usuario = new Usuario();
 	$usuario -> carregandoUsuario(5);
-	$usuario -> atualizarInformacoes("FernandoSC", "cs123456");
+	$usuario -> excluirRegistro();
 
 	echo $usuario;
  ?>

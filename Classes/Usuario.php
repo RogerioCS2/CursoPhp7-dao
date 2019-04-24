@@ -92,6 +92,19 @@
 			$this -> setDtcadastro(new DateTime($dados['dtcadastro']));
 		}
 
+		public function excluirRegistro(){
+			$sql = new PersistenciaBanco();
+
+			$sql -> comandosSql("delete from tb_usuario where idusuario = :id" ,array(				
+				':id' => $this -> getIdusuario()
+			));	
+
+			$this -> setIdusuario(0);
+			$this -> setDeslogin("");
+			$this -> setDessenha("");
+			$this -> setDtcadastro(new DateTime());	
+		}
+
 		public function inserindoDados(){
 			$sql = new PersistenciaBanco();
 
